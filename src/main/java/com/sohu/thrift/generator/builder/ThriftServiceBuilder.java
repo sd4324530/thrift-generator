@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.sohu.thrift.generator.builder;
 
 import java.lang.reflect.Method;
@@ -19,7 +16,6 @@ import com.sohu.thrift.generator.ThriftService;
 import com.sohu.thrift.generator.ThriftStruct;
 import com.sohu.thrift.generator.ThriftType;
 import com.sohu.thrift.generator.utils.CommonUtils;
-import com.sohu.thrift.generator.utils.ParameterNameDiscoverer;
 
 /**
  * 
@@ -28,8 +24,6 @@ import com.sohu.thrift.generator.utils.ParameterNameDiscoverer;
  * 创建日期:2013-4-27 下午10:08:14
  */
 public class ThriftServiceBuilder {
-	
-	private static final ParameterNameDiscoverer parameterNameDiscoverer = new ParameterNameDiscoverer();
 	
 	private ThriftStructBuilder thriftStructBuilder = new ThriftStructBuilder();
 	

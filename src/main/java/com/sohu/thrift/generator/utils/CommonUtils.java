@@ -17,9 +17,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 /**
  * It is CommontUtils?? May be call ReflectionUtils is better? :)
  * @author hongliuliao
@@ -27,8 +24,7 @@ import org.apache.commons.logging.LogFactory;
  * createTime:2012-9-11 上午10:54:48
  */
 public class CommonUtils {
-	private static final Log log = LogFactory.getLog(CommonUtils.class);
-	
+
 	public static boolean isBasicType(Class<?> clazz) {
 		if(Number.class.isAssignableFrom(clazz)) {
 			return true;
@@ -56,7 +52,6 @@ public class CommonUtils {
 		try {
 			return Class.forName(className);
 		} catch (Exception e) {
-			log.error("Class not found",e);
 			throw new RuntimeException("Class not found",e);
 		}
 	}
@@ -66,7 +61,6 @@ public class CommonUtils {
 			Class<?> clazz = forName(className);
 			return clazz.newInstance();
 		} catch (Exception e) {
-			log.error("newInstance error!", e);
 			throw new RuntimeException("newInstance error!", e);
 		}
 	}
@@ -75,7 +69,6 @@ public class CommonUtils {
 		try {
 			return clazz.newInstance();
 		} catch (Exception e) {
-			log.error("newInstance error!", e);
 			throw new RuntimeException("newInstance error!", e);
 		}
 	}
