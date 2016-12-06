@@ -20,7 +20,7 @@ public class ThriftType implements Cloneable {
 	public static final int BASIC_TYPE = 1;
 	public static final int COLLECTION_TYPE = 1 << 1;
 	public static final int STRUCT_TYPE = 1 << 2;
-	public static final int VOID_TYPE = 1 << 3;
+//	public static final int VOID_TYPE = 1 << 3;
 	public static final int ENUM_TYPE = 1 << 4;
 	
 	public static final ThriftType BOOL = new ThriftType("bool", BASIC_TYPE, "boolean", "Boolean");
@@ -34,7 +34,7 @@ public class ThriftType implements Cloneable {
 	public static final ThriftType SET = new ThriftType("set", COLLECTION_TYPE, "Set");  
 	public static final ThriftType MAP = new ThriftType("map", COLLECTION_TYPE, "Map"); 
 	public static final ThriftType ENUM = new ThriftType("enum", ENUM_TYPE, "enum", "Enum"); 
-	public static final ThriftType VOID = new ThriftType("void", VOID_TYPE, "void", "Void"); 
+//	public static final ThriftType VOID = new ThriftType("void", VOID_TYPE, "void", "Void");
 	public static final ThriftType STRUCT = new ThriftType("struct", STRUCT_TYPE, "class", "Class");
 	
 	private String value;

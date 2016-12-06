@@ -16,6 +16,8 @@ public class ThriftStructBuilder {
 	ThriftFieldBuilder thriftFieldBuilder = new ThriftFieldBuilder();
 	
 	public ThriftStruct buildThriftStruct(Class<?> clazz, List<ThriftStruct> structs, List<ThriftEnum> enums) {
+		if (clazz.getSimpleName().equals("void"))
+			return null;
 		Field[] fields = clazz.getDeclaredFields();
 		ThriftStruct struct = new ThriftStruct();
 		List<ThriftField> thriftFields = new ArrayList<ThriftField>();

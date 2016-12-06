@@ -4,9 +4,12 @@
 package com.sohu.thrift.generator.builder;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.sohu.thrift.generator.Generic;
 import com.sohu.thrift.generator.ThriftEnum;
@@ -59,7 +62,9 @@ public class ThriftServiceBuilder {
 			}
 			
 			Type[] paramTypes = method.getGenericParameterTypes();
-			String[] paramNames = parameterNameDiscoverer.getParameterNames(method);
+//			String[] paramNames = parameterNameDiscoverer.getParameterNames(method);
+			List<String> paramNames = Arrays.stream(method.getParameters())
+					.map(Parameter::getName).collect(Collectors.toList());
 			List<ThriftMethodArg> methodArgs = buildThriftMethodArgs(structs, paramTypes, paramNames, enums);
 			
 			thriftMethod.setMethodArgs(methodArgs);
@@ -131,11 +136,11 @@ public class ThriftServiceBuilder {
 	 * @param paramNames
 	 * @return
 	 */
-	private List<ThriftMethodArg> buildThriftMethodArgs(List<ThriftStruct> structs, Type[] paramTypes, String[] paramNames, List<ThriftEnum> enums) {
+	private List<ThriftMethodArg> buildThriftMethodArgs(List<ThriftStruct> structs, Type[] paramTypes, List<String> paramNames, List<ThriftEnum> enums) {
 		List<ThriftMethodArg> methodArgs = new ArrayList<ThriftMethodArg>();
 		for (int i = 0; i < paramTypes.length; i++) {
 			ThriftMethodArg methodArg = new ThriftMethodArg();
-			methodArg.setName(paramNames == null || paramNames.length == 0 ? ("arg" + i) : paramNames[i]);
+			methodArg.setName(paramNames == null || paramNames.size() == 0 ? ("arg" + i) : paramNames.get(i));
 
 			Type paramType = paramTypes[i];
 			ThriftType paramThriftType = ThriftType.fromJavaType(paramType);

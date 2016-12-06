@@ -3,9 +3,8 @@
  */
 package com.sohu.thrift.generator.builder;
 
+import com.github.sd4324530.thriftDemo.IHelloService;
 import org.junit.Test;
-
-import com.sohu.thrift.generator.test.ICommonUserService;
 
 /**
  * @author hongliuliao
@@ -18,7 +17,13 @@ public class ThriftStructBuilderTest {
 	
 	@Test
 	public void toOutputstream() throws Exception {
-		this.fileBuilder.buildToOutputStream(ICommonUserService.class, System.out);
+//		try (FileOutputStream fileOutputStream = new FileOutputStream("D:/helloService.thrift")){
+//			this.fileBuilder.buildToOutputStream(IHelloService.class, fileOutputStream);
+//			System.out.println("OK");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		this.fileBuilder.buildToOutputStream(IHelloService.class, System.out);
 	}
 	
 }

@@ -28,12 +28,12 @@ public class ThriftFileBuilder {
 	
 	public String getPackageName(Class<?> commonServiceClass) {
 		String packageName = commonServiceClass.getPackage().getName();
-		String thriftPackage = packageName + ".thrift";
-		return thriftPackage;
+//		String thriftPackage = packageName + ".thrift";
+		return packageName;
 	}
 	
 	public void buildToOutputStream(Class<?> commonServiceClass, OutputStream os) throws Exception {
-		Configuration cfg = new Configuration();
+		Configuration cfg = new Configuration(Configuration.VERSION_2_3_23);
 		cfg.setClassForTemplateLoading(ThriftFileBuilder.class, "/");
 		Template template = cfg.getTemplate("thrift.ftl");
 		Writer out = new OutputStreamWriter(os);
