@@ -56,9 +56,10 @@ public class ThriftServiceBuilder {
 			}
 			
 			Type[] paramTypes = method.getGenericParameterTypes();
-//			String[] paramNames = parameterNameDiscoverer.getParameterNames(method);
-			List<String> paramNames = Arrays.stream(method.getParameters())
-					.map(Parameter::getName).collect(Collectors.toList());
+			List<String> paramNames = new ArrayList<>();
+			for (Parameter parameter : method.getParameters()) {
+				paramNames.add(parameter.getName());
+			}
 			List<ThriftMethodArg> methodArgs = buildThriftMethodArgs(structs, paramTypes, paramNames, enums);
 			
 			thriftMethod.setMethodArgs(methodArgs);
